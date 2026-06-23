@@ -1,0 +1,54 @@
+/* =====================================================================
+   Font-size control — floating A− / A / A+ pill.
+   Scalează --scale pe :root (toate dimensiunile sunt în rem, deci se
+   scalează tot) și salvează preferința în localStorage. Persistă între
+   pagini și sesiuni. Se injectează singur — paginile doar includ scriptul.
+   ===================================================================== */
+(function () {
+  var KEY = "gsf-font-scale";
+  var MIN = 0.85, MAX = 1.8, STEP = 0.15;
+
+  function clamp(v) { return Math.min(MAX, Math.max(MIN, v)); }
+
+  function getScale() {
+    var v = parseFloat(localStorage.getItem(KEY));
+    return isNaN(v) ? 1 : clamp(v);
+  }
+
+  function apply(scale) {
+    document.documentElement.style.setProperty("--scale", scale);
+    localStorage.setItem(KEY, scale);
+  }
+
+  function build() {
+    apply(getScale());
+
+    var bar = document.createElement("div");
+    bar.className = "fontsize-control";
+    bar.setAttribute("role", "group");
+    bar.setAttribute("aria-label", "Mărime text");
+
+    function mk(label, title, fn) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.textContent = label;
+      b.title = title;
+      b.setAttribute("aria-label", title);
+      b.addEventListener("click", fn);
+      bar.appendChild(b);
+      return b;
+    }
+
+    mk("A−", "Micșorează textul", function () { apply(clamp(getScale() - STEP)); });
+    mk("↺", "Mărime implicită", function () { apply(1); });
+    mk("A+", "Mărește textul", function () { apply(clamp(getScale() + STEP)); });
+
+    document.body.appendChild(bar);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", build);
+  } else {
+    build();
+  }
+})();

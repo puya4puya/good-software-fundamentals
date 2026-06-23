@@ -20,11 +20,13 @@
   --ai:         #2d4a6b;   /* blue for "AI era" callouts */
   --ai-bg:      #e9eef4;
   --maxw:       42rem;
+  --base:       17px;      /* dimensiune de bază; mobilul o mărește mai jos */
+  --scale:      1;         /* multiplicator controlat de cititor (fontsize.js) */
 }
 
 * { box-sizing: border-box; }
 
-html { font-size: 17px; }
+html { font-size: calc(var(--base) * var(--scale)); }
 
 body {
   margin: 0 auto;
@@ -210,9 +212,45 @@ pre code { background: none; padding: 0; font-size: inherit; }
   font-style: italic;
 }
 
+/* ---- Font-size control (floating pill) ---- */
+.fontsize-control {
+  position: fixed;
+  right: 0.8rem;
+  bottom: 0.8rem;
+  z-index: 1000;
+  display: flex;
+  gap: 0.2rem;
+  padding: 0.25rem;
+  background: rgba(255, 255, 248, 0.94);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.14);
+  backdrop-filter: blur(4px);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.fontsize-control button {
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 999px;
+  width: 2.4rem;
+  height: 2.4rem;
+  font-size: 0.95rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fontsize-control button:hover { background: var(--accent-bg); color: var(--accent); }
+.fontsize-control button:active { transform: scale(0.92); }
+
 @media (max-width: 600px) {
+  :root { --base: 19px; }            /* mobilul pornește mai mare, nu mai mic */
+  body { padding: 2rem 1.1rem 6rem; } /* mai mult spațiu util pentru text */
   .compare { grid-template-columns: 1fr; }
-  html { font-size: 16px; }
+  .fontsize-control button { width: 2.9rem; height: 2.9rem; font-size: 1.05rem; } /* țintă atingere mai mare */
 }
 
 /* ---- Quiz widget ---- */
@@ -246,4 +284,5 @@ pre code { background: none; padding: 0; font-size: inherit; }
 @media print {
   body { background: #fff; max-width: 100%; }
   .quiz-widget button { display: none; }
+  .fontsize-control { display: none; }
 }
