@@ -15,7 +15,16 @@
     return isNaN(v) ? 1 : clamp(v);
   }
 
+  function baseSize() {
+    // citește --base din CSS; dacă lipsește (CSS vechi în cache), cade pe viewport
+    var v = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--base"));
+    if (!isNaN(v) && v > 0) return v;
+    return window.matchMedia("(max-width: 600px)").matches ? 19 : 17;
+  }
+
   function apply(scale) {
+    // px inline pe <html> — învinge orice regulă din stylesheet (chiar și din cache)
+    document.documentElement.style.fontSize = (baseSize() * scale) + "px";
     document.documentElement.style.setProperty("--scale", scale);
     localStorage.setItem(KEY, scale);
   }
