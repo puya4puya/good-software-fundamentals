@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecția 1 — Ce înseamnă „software bun"?</title>
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+
+<div class="course-tag">Good Software Fundamentals · Lecția 1</div>
+<h1>Ce înseamnă „software bun"?</h1>
+<p class="lead">Înainte să poți judeca cod — al tău sau al unui AI — ai nevoie de o definiție clară a ce e „bun". Aproape toți începătorii folosesc definiția greșită.</p>
+
+<h2>Definiția greșită (și de ce te costă)</h2>
+<p>Întrebat ce e codul bun, aproape oricine la început răspunde: <em>„cod care funcționează"</em>. E o capcană. Codul care funcționează azi e doar punctul de plecare. Întrebarea adevărată e:</p>
+
+<blockquote>Cât de greu va fi să-l <strong>citești, înțelegi și modifici</strong> peste trei luni — de către altcineva, sau de tine, care ai uitat tot?</blockquote>
+
+<p>Aici se ascunde adevărul incomod al meseriei: <strong>scrii codul o dată, dar îl citești și-l schimbi de zeci de ori.</strong> Costul real al software-ului nu e în scriere — e în tot ce vine după. Asta numim <a href="../glossary.html">costul de mentenanță</a>.</p>
+
+<div class="compare">
+  <div class="n">
+    <h4>Definiția slabă</h4>
+    „Software bun = merge și dă rezultatul corect acum."<br><br>
+    Te face să accepți orice grămadă de cod care trece testul de moment — inclusiv ce-ți toarnă AI-ul.
+  </div>
+  <div class="y">
+    <h4>Definiția folosită în curs</h4>
+    „Software bun = ușor de înțeles și de schimbat pe termen lung."<br><br>
+    Îți dă un criteriu cu care poți respinge cod care „merge" dar e o capcană.
+  </div>
+</div>
+
+<h2>Singurul dușman care contează: complexitatea</h2>
+<p>John Ousterhout, profesor la Stanford, comprimă tot designul de software într-o singură idee în cartea <em>A Philosophy of Software Design</em>:</p>
+
+<div class="key-idea">
+  <span class="label">Ideea-cheie</span>
+  Cel mai mare dușman al software-ului bun este <strong>complexitatea</strong>. Tot ce face un sistem mai greu de înțeles sau de modificat e complexitate. Designul bun nu înseamnă să adaugi lucruri deștepte — înseamnă să ții complexitatea sub control.
+</div>
+
+<p>Complexitatea nu apare dintr-o decizie mare și proastă. Apare din o mie de decizii mici — o variabilă cu nume neclar aici, o funcție care face trei lucruri acolo. Se acumulează încet, până când nimeni nu mai îndrăznește să atingă o anumită parte din cod. Recunoști complexitatea după trei simptome:</p>
+
+<ul>
+  <li><strong>Efort de schimbare:</strong> o modificare mică cere atingerea multor locuri.</li>
+  <li><strong>Sarcină cognitivă:</strong> trebuie să ții prea multe în cap ca să faci ceva.</li>
+  <li><strong>Necunoscute:</strong> nu e clar <em>ce</em> trebuie să schimbi sau ce vei strica.</li>
+</ul>
+
+<h2>De ce contează asta <em>mai mult</em> în era AI</h2>
+<div class="callout ai">
+  <span class="label">Era AI</span>
+  Un asistent AI poate genera 200 de linii de cod în 10 secunde. Codul „merge" la prima rulare — deci pare bun. Dar AI-ul optimizează ca să-ți dea ceva ce funcționează <em>acum</em>, nu neapărat ceva cu complexitate scăzută pe termen lung. Asta mută gâtul de sticlă: nu mai e <strong>scrierea</strong> codul, ci <strong>judecarea</strong> lui. Fără o definiție clară a ce e bun, accepți complexitate pe care va trebui s-o plătești mai târziu — doar că acum se acumulează de 10× mai repede.
+</div>
+<p>De-asta misiunea ta („să fii productiv cu AI fără să pierzi controlul calității") începe exact aici: cu un criteriu. Restul cursului îți dă unelte concrete pentru a <em>scădea</em> complexitatea. Lecția asta îți dă <em>lentila</em> prin care le vei privi pe toate.</p>
+
+<h2>Verifică-te (din memorie)</h2>
+<p>Răspunde fără să te întorci în text — efortul de a-ți aminti e ce fixează ideea.</p>
+
+<div class="quiz" data-quiz='[
+  {
+    "q": "Care e cel mai bun criteriu pentru „software bun" în acest curs?",
+    "options": [
+      "Codul rulează și dă rezultatul corect chiar acum",
+      "Codul e ușor de înțeles și de schimbat pe termen lung",
+      "Codul folosește cele mai noi tehnologii disponibile",
+      "Codul a fost scris în cât mai puține linii posibil"
+    ],
+    "answer": 1,
+    "why": "„Merge acum” e doar startul; costul real e mentenanța de-a lungul vieții codului."
+  },
+  {
+    "q": "Conform lui Ousterhout, care e cel mai mare dușman al software-ului?",
+    "options": [
+      "Lipsa unui framework modern ales corect de la bun",
+      "Numărul prea mare de teste scrise pentru fiecare modul",
+      "Complexitatea care îl face greu de înțeles și schimbat",
+      "Viteza prea mică de execuție a programului pe server"
+    ],
+    "answer": 2,
+    "why": "Complexitatea e tema centrală: designul bun înseamnă a o ține sub control."
+  },
+  {
+    "q": "De ce contează definiția asta mai mult în era AI?",
+    "options": [
+      "Pentru că AI-ul scrie întotdeauna cod fără niciun fel de bug",
+      "Pentru că frameworkurile se schimbă mult mai des decât înainte",
+      "Pentru că nimeni nu mai citește codul scris de un alt om",
+      "Pentru că AI produce mult cod rapid, deci judecata devine cheia"
+    ],
+    "answer": 3,
+    "why": "Gâtul de sticlă se mută de la a scrie cod la a judeca dacă e bun."
+  }
+]'></div>
+
+<div class="source">
+  <span class="label">Sursă principală de citit/văzut:</span>
+  John Ousterhout — <a href="https://www.youtube.com/watch?v=bmSAYlu0NcY">„A Philosophy of Software Design" (Google Tech Talk, ~1h)</a>. Privește primele ~20 de minute: e exact ideea de complexitate din lecția asta, de la sursă. Restul cursului se sprijină pe ea.
+</div>
+
+<div class="ask-teacher">
+  Ceva neclar? Sunt profesorul tău — întreabă-mă orice în chat. „De ce e complexitatea rea dacă codul merge?", „Dă-mi un exemplu real în JS", „Cum văd complexitatea în codul meu?" sunt toate întrebări bune.
+</div>
+
+<div class="lesson-nav">
+  <span>← Începutul cursului</span>
+  <span>Următorul: <strong>Module adânci vs. superficiale</strong> (în curând)</span>
+</div>
+
+<script src="../assets/quiz.js"></script>
+</body>
+</html>

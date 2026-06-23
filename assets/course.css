@@ -1,0 +1,249 @@
+/* =====================================================================
+   Good Software Fundamentals — shared course stylesheet
+   Tufte-inspired: generous margins, readable serif, muted palette.
+   Every lesson links this file. Keep lessons consistent — edit here,
+   not inline.
+   ===================================================================== */
+
+:root {
+  --ink:        #1a1a1a;
+  --ink-soft:   #4a4a4a;
+  --paper:      #fffff8;   /* warm Tufte paper */
+  --rule:       #d8d8cf;
+  --accent:     #6b2d2d;   /* deep brick red for emphasis */
+  --accent-bg:  #f4eaea;
+  --good:       #2e6b3f;
+  --good-bg:    #e9f2eb;
+  --bad:        #8a2b2b;
+  --bad-bg:     #f6eaea;
+  --code-bg:    #f3f1e7;
+  --ai:         #2d4a6b;   /* blue for "AI era" callouts */
+  --ai-bg:      #e9eef4;
+  --maxw:       42rem;
+}
+
+* { box-sizing: border-box; }
+
+html { font-size: 17px; }
+
+body {
+  margin: 0 auto;
+  padding: 3rem 2rem 6rem;
+  max-width: var(--maxw);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, "Iowan Old Style", "Palatino Linotype", serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- Course chrome ---- */
+.course-tag {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.4rem;
+}
+
+h1 {
+  font-size: 2.1rem;
+  line-height: 1.15;
+  margin: 0.2rem 0 0.6rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin: 2.4rem 0 0.6rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.3rem;
+}
+
+h3 { font-size: 1.1rem; margin: 1.6rem 0 0.4rem; }
+
+.lead {
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+p { margin: 0.8rem 0; }
+
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--rule); }
+a:hover { border-bottom-color: var(--accent); }
+
+strong { font-weight: 700; }
+
+blockquote {
+  margin: 1.4rem 0;
+  padding: 0.2rem 0 0.2rem 1.2rem;
+  border-left: 3px solid var(--rule);
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+code {
+  font-family: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  font-size: 0.86em;
+  background: var(--code-bg);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 1rem 1.2rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+pre code { background: none; padding: 0; font-size: inherit; }
+
+/* ---- Callout boxes ---- */
+.callout {
+  margin: 1.6rem 0;
+  padding: 1rem 1.2rem;
+  border-radius: 6px;
+  border-left: 4px solid var(--accent);
+  background: var(--accent-bg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.95rem;
+}
+.callout .label {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+}
+.callout.ai   { border-left-color: var(--ai);   background: var(--ai-bg); }
+.callout.ai .label   { color: var(--ai); }
+.callout.good { border-left-color: var(--good); background: var(--good-bg); }
+.callout.good .label { color: var(--good); }
+.callout .label { color: var(--accent); }
+
+/* ---- Key idea banner ---- */
+.key-idea {
+  margin: 2rem 0;
+  padding: 1.4rem 1.6rem;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-top: 4px solid var(--accent);
+  border-radius: 4px;
+  font-size: 1.1rem;
+}
+.key-idea .label {
+  font-family: -apple-system, sans-serif;
+  font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); font-weight: 700; display:block; margin-bottom: 0.4rem;
+}
+
+/* ---- Comparison table good/bad ---- */
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.4rem 0; }
+.compare > div { padding: 1rem; border-radius: 6px; font-size: 0.92rem; }
+.compare .y { background: var(--good-bg); border: 1px solid #cfe0d4; }
+.compare .n { background: var(--bad-bg);  border: 1px solid #e6cccc; }
+.compare h4 { margin: 0 0 0.5rem; font-family: -apple-system, sans-serif; font-size: 0.8rem; letter-spacing:0.06em; text-transform: uppercase; }
+.compare .y h4 { color: var(--good); }
+.compare .n h4 { color: var(--bad); }
+
+/* ---- Home: lesson & source lists ---- */
+.lesson-list { list-style: none; padding: 0; }
+.lesson-list > li {
+  margin: 0 0 1rem;
+  padding: 0.9rem 1.1rem;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+.lesson-list > li.upcoming { opacity: 0.6; background: transparent; border-style: dashed; }
+.muted { color: var(--ink-soft); font-size: 0.9rem; }
+.sources-list, .lesson-list { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.sources-list li { margin: 0.5rem 0; font-size: 0.92rem; }
+
+/* ---- Glossary ---- */
+.term { margin: 1.4rem 0; padding-bottom: 1.2rem; border-bottom: 1px solid var(--rule); }
+.term:last-child { border-bottom: none; }
+.term dt { font-weight: 700; font-size: 1.05rem; color: var(--accent); }
+.term dd { margin: 0.4rem 0 0; }
+.term .avoid {
+  display: block; margin-top: 0.4rem;
+  font-family: -apple-system, sans-serif; font-size: 0.82rem; color: var(--ink-soft);
+}
+.term .avoid b { color: var(--bad); font-weight: 600; }
+
+/* ---- Footer nav ---- */
+.lesson-nav {
+  margin-top: 4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--rule);
+  font-family: -apple-system, sans-serif;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.source {
+  margin: 2rem 0;
+  font-family: -apple-system, sans-serif;
+  font-size: 0.9rem;
+  background: #fff;
+  border: 1px dashed var(--rule);
+  padding: 0.9rem 1.1rem;
+  border-radius: 6px;
+}
+.source .label { font-weight: 700; color: var(--accent); }
+
+.ask-teacher {
+  margin-top: 2.5rem;
+  font-family: -apple-system, sans-serif;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  text-align: center;
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .compare { grid-template-columns: 1fr; }
+  html { font-size: 16px; }
+}
+
+/* ---- Quiz widget ---- */
+.quiz-widget {
+  margin: 1.8rem 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.quiz-q { margin: 1.4rem 0; }
+.quiz-prompt { font-size: 1rem; margin: 0 0 0.6rem; font-family: Georgia, serif; }
+.quiz-prompt .qn { color: var(--accent); font-weight: 700; }
+.quiz-opts { display: grid; gap: 0.5rem; }
+.quiz-opts button {
+  text-align: left;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.92rem;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.12s, border-color 0.12s;
+}
+.quiz-opts button:hover:not(:disabled) { border-color: var(--accent); background: var(--accent-bg); }
+.quiz-opts button:disabled { cursor: default; opacity: 0.95; }
+.quiz-opts button.correct { background: var(--good-bg); border-color: var(--good); color: var(--good); font-weight: 700; }
+.quiz-opts button.wrong   { background: var(--bad-bg);  border-color: var(--bad);  color: var(--bad); }
+.quiz-feedback { font-size: 0.9rem; margin: 0.6rem 0 0; min-height: 1px; }
+.quiz-feedback.ok { color: var(--good); }
+.quiz-feedback.no { color: var(--bad); }
+
+@media print {
+  body { background: #fff; max-width: 100%; }
+  .quiz-widget button { display: none; }
+}
