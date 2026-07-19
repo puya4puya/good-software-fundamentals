@@ -1,0 +1,171 @@
+/* Shared stylesheet for this teaching workspace — lessons and reference docs. */
+
+:root {
+  --ink: #1a1a1a;
+  --paper: #fdfcf9;
+  --muted: #6b6b6b;
+  --rule: #ddd8cc;
+  --accent: #a6401f;
+  --code-bg: #f2efe6;
+  --callout-bg: #fbf3e6;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #e8e6df;
+    --paper: #1c1b18;
+    --muted: #9a988f;
+    --rule: #3a3830;
+    --accent: #e2803f;
+    --code-bg: #262420;
+    --callout-bg: #2a2620;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { color-scheme: light dark; }
+
+body {
+  margin: 0;
+  padding: 3rem 1.5rem 6rem;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+
+main {
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+h1, h2, h3 {
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+h1 {
+  font-size: 1.9rem;
+  margin-bottom: 0.25rem;
+}
+
+.kicker {
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  color: var(--accent);
+  margin: 0 0 0.5rem;
+}
+
+h2 {
+  font-size: 1.35rem;
+  margin-top: 2.5rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.3rem;
+}
+
+p, ul, ol { margin: 1rem 0; }
+
+code {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.92em;
+  background: var(--code-bg);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+}
+
+pre {
+  background: var(--code-bg);
+  padding: 1rem 1.1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+th, td {
+  border: 1px solid var(--rule);
+  padding: 0.4rem 0.6rem;
+  text-align: left;
+}
+
+th {
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  background: var(--code-bg);
+}
+
+.callout {
+  background: var(--callout-bg);
+  border-left: 3px solid var(--accent);
+  padding: 0.9rem 1.1rem;
+  border-radius: 0 6px 6px 0;
+  margin: 1.5rem 0;
+}
+
+.callout p:first-child { margin-top: 0; }
+.callout p:last-child { margin-bottom: 0; }
+
+.try-it {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin: 1.5rem 0;
+}
+
+.try-it summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.answer {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--rule);
+}
+
+a { color: var(--accent); }
+a:visited { color: var(--accent); opacity: 0.85; }
+
+.source {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.nav {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.ask-teacher {
+  margin-top: 2.5rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+@media print {
+  body { padding: 0; font-size: 11pt; }
+  .nav, .ask-teacher { display: none; }
+  a { color: var(--ink); text-decoration: none; }
+}

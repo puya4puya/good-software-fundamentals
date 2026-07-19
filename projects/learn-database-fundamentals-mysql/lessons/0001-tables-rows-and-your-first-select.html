@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lecția 1 — Tabele, rânduri și primul tău SELECT</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<main>
+
+<p class="kicker">Lecția 1 · Fundamentele bazelor de date (MySQL)</p>
+<h1>Tabele, rânduri și primul tău SELECT</h1>
+
+<p>O bază de date relațională stochează datele în <strong>tabele</strong> — niște grile, cam ca un spreadsheet. Această lecție te duce până la punctul în care te uiți la un tabel și scoți din el exact datele de care ai nevoie, cu o singură linie de SQL.</p>
+
+<h2>Un tabel, mai precis</h2>
+
+<p>Un tabel are un set fix de <strong>coloane</strong> (câmpurile pe care le are fiecare înregistrare) și oricâte <strong>rânduri</strong> (un rând = o înregistrare). Iată un tabel minuscul <code>orders</code> — genul de formă pe care o recunoști din tabelul <code>sales_order</code> al unui magazin OpenMage, simplificat la esențial:</p>
+
+<table>
+<thead>
+<tr><th>order_id</th><th>customer_email</th><th>status</th><th>total</th></tr>
+</thead>
+<tbody>
+<tr><td>1001</td><td>ana@example.com</td><td>complete</td><td>129.90</td></tr>
+<tr><td>1002</td><td>bogdan@example.com</td><td>pending</td><td>59.00</td></tr>
+<tr><td>1003</td><td>ana@example.com</td><td>complete</td><td>245.50</td></tr>
+<tr><td>1004</td><td>cristina@example.com</td><td>canceled</td><td>19.99</td></tr>
+</tbody>
+</table>
+
+<p>Încă un termen de care ai nevoie acum: <strong><code>order_id</code> este cheia primară</strong> — coloana care identifică unic fiecare rând. Niciun rând nu împarte aceeași valoare de cheie primară cu altul; asta face posibil să indici fără ambiguitate "comanda aceea anume".</p>
+
+<div class="callout">
+<p><strong>Verificare de vocabular.</strong> Tabel = toată grila. Rând = o înregistrare (o comandă). Coloană = un câmp pe care îl are fiecare rând (<code>status</code>, <code>total</code>, …). Cheie primară = coloana care garantează unicitatea fiecărui rând.</p>
+</div>
+
+<h2>Primul tău SELECT</h2>
+
+<p>Ca să ceri date de la o bază de date, scrii un enunț <code>SELECT</code>. Forma e mereu aceeași: <em>ce coloane, din ce tabel, ce condiție trebuie să îndeplinească</em>.</p>
+
+<pre><code>SELECT order_id, status, total
+FROM orders
+WHERE status = 'complete';</code></pre>
+
+<p>Citește de la stânga la dreapta: "dă-mi coloanele <code>order_id</code>, <code>status</code> și <code>total</code>, din tabelul <code>orders</code>, dar doar rândurile unde <code>status</code> este egal cu <code>'complete'</code>." Rulat pe tabelul de mai sus, asta returnează rândurile <code>1001</code> și <code>1003</code> — <code>1002</code> și <code>1004</code> sunt eliminate pentru că <code>status</code>-ul lor nu se potrivește.</p>
+
+<p>Două lucruri de reținut din prima:</p>
+<ul>
+<li><code>*</code> în loc de numele coloanelor înseamnă "toate coloanele" — util când explorezi, dar în cod real, numirea explicită a coloanelor de care ai nevoie e mai clară și mai ieftină.</li>
+<li>Valorile de tip text (precum <code>'complete'</code>) se scriu între ghilimele simple. Numerele (precum <code>129.90</code>) nu.</li>
+</ul>
+
+<details class="try-it">
+<summary>Încearcă — ce returnează acest query?</summary>
+<pre><code>SELECT customer_email, total
+FROM orders
+WHERE customer_email = 'ana@example.com';</code></pre>
+<div class="answer">
+<p>Două rânduri — <code>1001</code> și <code>1003</code> — pentru că sunt singurele rânduri unde <code>customer_email</code> este egal cu <code>'ana@example.com'</code>. Fiecare rând returnat arată doar cele două coloane cerute: <code>customer_email</code> și <code>total</code>.</p>
+</div>
+</details>
+
+<details class="try-it">
+<summary>Încearcă — scrie-l tu</summary>
+<p>Folosind același tabel <code>orders</code>, scrie (pe hârtie sau în minte) un query care returnează <code>order_id</code>-ul pentru fiecare comandă care <em>nu</em> e completă. Indiciu: operatorul SQL pentru "diferit de" este <code>&lt;&gt;</code> sau <code>!=</code>.</p>
+<div class="answer">
+<pre><code>SELECT order_id
+FROM orders
+WHERE status &lt;&gt; 'complete';</code></pre>
+<p>Returnează <code>1002</code> și <code>1004</code>.</p>
+</div>
+</details>
+
+<p class="source">Sursa primară pentru această lecție: <a href="https://dev.mysql.com/doc/mysql-tutorial-excerpt/8.0/en/selecting-all.html" target="_blank" rel="noopener">MySQL 8.0 Reference Manual — Selecting All Data</a>. Pentru exersare practică, cu feedback instant, fă în continuare <a href="https://sqlbolt.com/lesson/select_queries_introduction" target="_blank" rel="noopener">SQLBolt Lesson 1</a> — aceeași idee, pe un alt tabel, cu o bază de date reală care îți verifică răspunsurile.</p>
+
+<p class="ask-teacher">Ceva neclar, sau vrei să încerci asta pe date reale în loc de tabelul-jucărie de mai sus? Întreabă-ți agentul — pentru asta e conversația de follow-up.</p>
+
+<div class="nav">
+<span>Referință: <a href="../reference/select-basics.html">Cheat sheet sintaxă SELECT</a></span>
+<span>Lecția următoare: JOIN — vine odată ce asta s-a așezat bine</span>
+</div>
+
+</main>
+</body>
+</html>

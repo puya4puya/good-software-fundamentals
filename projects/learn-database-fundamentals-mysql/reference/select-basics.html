@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Referință — Bazele SELECT</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<main>
+
+<p class="kicker">Referință</p>
+<h1>Bazele SELECT</h1>
+<p>Comprimat din <a href="../lessons/0001-tables-rows-and-your-first-select.html">Lecția 1</a>. Printeaz-o sau ține-o deschisă cât timp scrii query-uri.</p>
+
+<h2>Forma</h2>
+<pre><code>SELECT coloana1, coloana2
+FROM nume_tabel
+WHERE conditie;</code></pre>
+
+<table>
+<thead><tr><th>Clauză</th><th>Răspunde la</th></tr></thead>
+<tbody>
+<tr><td><code>SELECT</code></td><td>Ce coloane? (<code>*</code> = toate)</td></tr>
+<tr><td><code>FROM</code></td><td>Din ce tabel?</td></tr>
+<tr><td><code>WHERE</code></td><td>Ce rânduri? (opțional — omite pentru toate rândurile)</td></tr>
+</tbody>
+</table>
+
+<h2>Valori</h2>
+<table>
+<thead><tr><th>Tip</th><th>Exemplu</th></tr></thead>
+<tbody>
+<tr><td>Text</td><td><code>status = 'complete'</code> — ghilimele simple</td></tr>
+<tr><td>Număr</td><td><code>total &gt; 100</code> — fără ghilimele</td></tr>
+</tbody>
+</table>
+
+<h2>Operatori de comparație</h2>
+<table>
+<thead><tr><th>Operator</th><th>Înseamnă</th></tr></thead>
+<tbody>
+<tr><td><code>=</code></td><td>egal cu</td></tr>
+<tr><td><code>&lt;&gt;</code> sau <code>!=</code></td><td>diferit de</td></tr>
+<tr><td><code>&gt;</code> / <code>&lt;</code></td><td>mai mare / mai mic decât</td></tr>
+<tr><td><code>&gt;=</code> / <code>&lt;=</code></td><td>mai mare-sau-egal / mai mic-sau-egal</td></tr>
+</tbody>
+</table>
+
+<p class="source">Sintaxa completă: <a href="https://dev.mysql.com/doc/refman/8.0/en/select.html" target="_blank" rel="noopener">MySQL 8.0 Reference Manual — SELECT Statement</a>.</p>
+
+<div class="nav">
+<span><a href="../lessons/0001-tables-rows-and-your-first-select.html">← Înapoi la Lecția 1</a></span>
+</div>
+
+</main>
+</body>
+</html>
