@@ -8,6 +8,8 @@
   --accent: #a6401f;
   --code-bg: #f2efe6;
   --callout-bg: #fbf3e6;
+  --base: 16px;  /* base root size; scaled by the mobile font-size widget */
+  --scale: 1;    /* multiplier controlled by fontsize.js */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,7 +26,7 @@
 
 * { box-sizing: border-box; }
 
-html { color-scheme: light dark; }
+html { color-scheme: light dark; font-size: calc(var(--base) * var(--scale)); }
 
 body {
   margin: 0;
@@ -164,8 +166,47 @@ a:visited { color: var(--accent); opacity: 0.85; }
   color: var(--muted);
 }
 
+/* ---- Font-size control (floating pill, mobile only) ---- */
+.fontsize-control {
+  display: none; /* hidden on desktop — this widget is for mobile reading */
+  position: fixed;
+  right: 0.8rem;
+  bottom: 0.8rem;
+  z-index: 1000;
+  gap: 0.2rem;
+  padding: 0.25rem;
+  background: var(--paper);
+  opacity: 0.96;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16);
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+.fontsize-control button {
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 999px;
+  width: 2.9rem;
+  height: 2.9rem;
+  font-size: 1.05rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fontsize-control button:active { background: var(--code-bg); transform: scale(0.92); }
+
+@media (max-width: 600px) {
+  .fontsize-control { display: flex; }
+}
+
 @media print {
   body { padding: 0; font-size: 11pt; }
-  .nav, .ask-teacher { display: none; }
+  .nav, .ask-teacher, .fontsize-control { display: none; }
   a { color: var(--ink); text-decoration: none; }
 }
