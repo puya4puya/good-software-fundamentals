@@ -1,56 +1,56 @@
 <!doctype html>
-<html lang="en">
+<html lang="ro">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Reference — SELECT Basics</title>
+<title>Referință — Bazele SELECT</title>
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
 <main>
 
-<p class="kicker">Reference</p>
-<h1>SELECT Basics</h1>
-<p>Compressed from <a href="../lessons/0001-tables-rows-and-your-first-select.html">Lesson 1</a>. Print this or keep it open while you write queries.</p>
+<p class="kicker">Referință</p>
+<h1>Bazele SELECT</h1>
+<p>Comprimat din <a href="../lessons/0001-tables-rows-and-your-first-select.html">Lecția 1</a>. Printeaz-o sau ține-o deschisă cât timp scrii query-uri.</p>
 
-<h2>Shape</h2>
-<pre><code>SELECT column1, column2
-FROM table_name
-WHERE condition;</code></pre>
+<h2>Forma</h2>
+<pre><code>SELECT coloana1, coloana2
+FROM nume_tabel
+WHERE conditie;</code></pre>
 
 <table>
-<thead><tr><th>Clause</th><th>Answers</th></tr></thead>
+<thead><tr><th>Clauză</th><th>Răspunde la</th></tr></thead>
 <tbody>
-<tr><td><code>SELECT</code></td><td>Which columns? (<code>*</code> = all)</td></tr>
-<tr><td><code>FROM</code></td><td>Which table?</td></tr>
-<tr><td><code>WHERE</code></td><td>Which rows? (optional — omit to get every row)</td></tr>
+<tr><td><code>SELECT</code></td><td>Ce coloane? (<code>*</code> = toate)</td></tr>
+<tr><td><code>FROM</code></td><td>Din ce tabel?</td></tr>
+<tr><td><code>WHERE</code></td><td>Ce rânduri? (opțional — omite pentru toate rândurile)</td></tr>
 </tbody>
 </table>
 
-<h2>Values</h2>
+<h2>Valori</h2>
 <table>
-<thead><tr><th>Type</th><th>Example</th></tr></thead>
+<thead><tr><th>Tip</th><th>Exemplu</th></tr></thead>
 <tbody>
-<tr><td>Text</td><td><code>status = 'complete'</code> — single quotes</td></tr>
-<tr><td>Number</td><td><code>total &gt; 100</code> — no quotes</td></tr>
+<tr><td>Text</td><td><code>status = 'complete'</code> — ghilimele simple</td></tr>
+<tr><td>Număr</td><td><code>total &gt; 100</code> — fără ghilimele</td></tr>
 </tbody>
 </table>
 
-<h2>Comparison operators</h2>
+<h2>Operatori de comparație</h2>
 <table>
-<thead><tr><th>Operator</th><th>Meaning</th></tr></thead>
+<thead><tr><th>Operator</th><th>Înseamnă</th></tr></thead>
 <tbody>
-<tr><td><code>=</code></td><td>equal to</td></tr>
-<tr><td><code>&lt;&gt;</code> or <code>!=</code></td><td>not equal to</td></tr>
-<tr><td><code>&gt;</code> / <code>&lt;</code></td><td>greater / less than</td></tr>
-<tr><td><code>&gt;=</code> / <code>&lt;=</code></td><td>greater-or-equal / less-or-equal</td></tr>
+<tr><td><code>=</code></td><td>egal cu</td></tr>
+<tr><td><code>&lt;&gt;</code> sau <code>!=</code></td><td>diferit de</td></tr>
+<tr><td><code>&gt;</code> / <code>&lt;</code></td><td>mai mare / mai mic decât</td></tr>
+<tr><td><code>&gt;=</code> / <code>&lt;=</code></td><td>mai mare-sau-egal / mai mic-sau-egal</td></tr>
 </tbody>
 </table>
 
-<p class="source">Full syntax: <a href="https://dev.mysql.com/doc/refman/8.0/en/select.html" target="_blank" rel="noopener">MySQL 8.0 Reference Manual — SELECT Statement</a>.</p>
+<p class="source">Sintaxa completă: <a href="https://dev.mysql.com/doc/refman/8.0/en/select.html" target="_blank" rel="noopener">MySQL 8.0 Reference Manual — SELECT Statement</a>.</p>
 
 <div class="nav">
-<span><a href="../lessons/0001-tables-rows-and-your-first-select.html">← Back to Lesson 1</a></span>
+<span><a href="../lessons/0001-tables-rows-and-your-first-select.html">← Înapoi la Lecția 1</a></span>
 </div>
 
 </main>

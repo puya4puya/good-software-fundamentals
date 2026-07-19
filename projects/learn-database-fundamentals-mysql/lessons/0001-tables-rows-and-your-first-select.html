@@ -1,22 +1,22 @@
 <!doctype html>
-<html lang="en">
+<html lang="ro">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Lesson 1 — Tables, Rows, and Your First SELECT</title>
+<title>Lecția 1 — Tabele, rânduri și primul tău SELECT</title>
 <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
 <main>
 
-<p class="kicker">Lesson 1 · Database Fundamentals (MySQL)</p>
-<h1>Tables, Rows, and Your First SELECT</h1>
+<p class="kicker">Lecția 1 · Fundamentele bazelor de date (MySQL)</p>
+<h1>Tabele, rânduri și primul tău SELECT</h1>
 
-<p>A relational database stores data in <strong>tables</strong> — grids, a lot like a spreadsheet. This lesson gets you to the point where you can look at a table and pull exactly the data you want out of it with one line of SQL.</p>
+<p>O bază de date relațională stochează datele în <strong>tabele</strong> — niște grile, cam ca un spreadsheet. Această lecție te duce până la punctul în care te uiți la un tabel și scoți din el exact datele de care ai nevoie, cu o singură linie de SQL.</p>
 
-<h2>A table, precisely</h2>
+<h2>Un tabel, mai precis</h2>
 
-<p>A table has a fixed set of <strong>columns</strong> (the fields every record has) and any number of <strong>rows</strong> (one row = one record). Here's a tiny <code>orders</code> table — the kind of shape you'll recognize from an OpenMage store's <code>sales_order</code> table, simplified down to the essentials:</p>
+<p>Un tabel are un set fix de <strong>coloane</strong> (câmpurile pe care le are fiecare înregistrare) și oricâte <strong>rânduri</strong> (un rând = o înregistrare). Iată un tabel minuscul <code>orders</code> — genul de formă pe care o recunoști din tabelul <code>sales_order</code> al unui magazin OpenMage, simplificat la esențial:</p>
 
 <table>
 <thead>
@@ -30,56 +30,56 @@
 </tbody>
 </table>
 
-<p>One more term you need now: <strong><code>order_id</code> is the primary key</strong> — the column that uniquely identifies each row. No two rows share a primary key value; that's what makes it possible to point at "that one order" unambiguously.</p>
+<p>Încă un termen de care ai nevoie acum: <strong><code>order_id</code> este cheia primară</strong> — coloana care identifică unic fiecare rând. Niciun rând nu împarte aceeași valoare de cheie primară cu altul; asta face posibil să indici fără ambiguitate "comanda aceea anume".</p>
 
 <div class="callout">
-<p><strong>Vocabulary check.</strong> Table = the whole grid. Row = one record (one order). Column = one field every row has (<code>status</code>, <code>total</code>, …). Primary key = the column guaranteeing each row is unique.</p>
+<p><strong>Verificare de vocabular.</strong> Tabel = toată grila. Rând = o înregistrare (o comandă). Coloană = un câmp pe care îl are fiecare rând (<code>status</code>, <code>total</code>, …). Cheie primară = coloana care garantează unicitatea fiecărui rând.</p>
 </div>
 
-<h2>Your first SELECT</h2>
+<h2>Primul tău SELECT</h2>
 
-<p>To ask a database for data, you write a <code>SELECT</code> statement. The shape is always: <em>which columns, from which table, matching which condition</em>.</p>
+<p>Ca să ceri date de la o bază de date, scrii un enunț <code>SELECT</code>. Forma e mereu aceeași: <em>ce coloane, din ce tabel, ce condiție trebuie să îndeplinească</em>.</p>
 
 <pre><code>SELECT order_id, status, total
 FROM orders
 WHERE status = 'complete';</code></pre>
 
-<p>Read it left to right: "give me the <code>order_id</code>, <code>status</code>, and <code>total</code> columns, from the <code>orders</code> table, but only rows where <code>status</code> equals <code>'complete'</code>." Run against the table above, that returns rows <code>1001</code> and <code>1003</code> — <code>1002</code> and <code>1004</code> are filtered out because their <code>status</code> doesn't match.</p>
+<p>Citește de la stânga la dreapta: "dă-mi coloanele <code>order_id</code>, <code>status</code> și <code>total</code>, din tabelul <code>orders</code>, dar doar rândurile unde <code>status</code> este egal cu <code>'complete'</code>." Rulat pe tabelul de mai sus, asta returnează rândurile <code>1001</code> și <code>1003</code> — <code>1002</code> și <code>1004</code> sunt eliminate pentru că <code>status</code>-ul lor nu se potrivește.</p>
 
-<p>Two things worth internalizing immediately:</p>
+<p>Două lucruri de reținut din prima:</p>
 <ul>
-<li><code>*</code> instead of column names means "all columns" — useful for exploring, but in real code naming the columns you actually want is clearer and cheaper.</li>
-<li>Text values (like <code>'complete'</code>) go in single quotes. Numbers (like <code>129.90</code>) don't.</li>
+<li><code>*</code> în loc de numele coloanelor înseamnă "toate coloanele" — util când explorezi, dar în cod real, numirea explicită a coloanelor de care ai nevoie e mai clară și mai ieftină.</li>
+<li>Valorile de tip text (precum <code>'complete'</code>) se scriu între ghilimele simple. Numerele (precum <code>129.90</code>) nu.</li>
 </ul>
 
 <details class="try-it">
-<summary>Try it — what does this query return?</summary>
+<summary>Încearcă — ce returnează acest query?</summary>
 <pre><code>SELECT customer_email, total
 FROM orders
 WHERE customer_email = 'ana@example.com';</code></pre>
 <div class="answer">
-<p>Two rows — <code>1001</code> and <code>1003</code> — since those are the only rows where <code>customer_email</code> equals <code>'ana@example.com'</code>. Each returned row shows only the two requested columns: <code>customer_email</code> and <code>total</code>.</p>
+<p>Două rânduri — <code>1001</code> și <code>1003</code> — pentru că sunt singurele rânduri unde <code>customer_email</code> este egal cu <code>'ana@example.com'</code>. Fiecare rând returnat arată doar cele două coloane cerute: <code>customer_email</code> și <code>total</code>.</p>
 </div>
 </details>
 
 <details class="try-it">
-<summary>Try it — write your own</summary>
-<p>Using the same <code>orders</code> table, write (on paper or in your head) a query that returns the <code>order_id</code> for every order that is <em>not</em> complete. Hint: SQL's "not equal" operator is <code>&lt;&gt;</code> or <code>!=</code>.</p>
+<summary>Încearcă — scrie-l tu</summary>
+<p>Folosind același tabel <code>orders</code>, scrie (pe hârtie sau în minte) un query care returnează <code>order_id</code>-ul pentru fiecare comandă care <em>nu</em> e completă. Indiciu: operatorul SQL pentru "diferit de" este <code>&lt;&gt;</code> sau <code>!=</code>.</p>
 <div class="answer">
 <pre><code>SELECT order_id
 FROM orders
 WHERE status &lt;&gt; 'complete';</code></pre>
-<p>Returns <code>1002</code> and <code>1004</code>.</p>
+<p>Returnează <code>1002</code> și <code>1004</code>.</p>
 </div>
 </details>
 
-<p class="source">Primary source for this lesson: <a href="https://dev.mysql.com/doc/mysql-tutorial-excerpt/8.0/en/selecting-all.html" target="_blank" rel="noopener">MySQL 8.0 Reference Manual — Selecting All Data</a>. For hands-on practice with instant feedback, do <a href="https://sqlbolt.com/lesson/select_queries_introduction" target="_blank" rel="noopener">SQLBolt Lesson 1</a> next — it's the same idea against a different table, with a real database checking your answers.</p>
+<p class="source">Sursa primară pentru această lecție: <a href="https://dev.mysql.com/doc/mysql-tutorial-excerpt/8.0/en/selecting-all.html" target="_blank" rel="noopener">MySQL 8.0 Reference Manual — Selecting All Data</a>. Pentru exersare practică, cu feedback instant, fă în continuare <a href="https://sqlbolt.com/lesson/select_queries_introduction" target="_blank" rel="noopener">SQLBolt Lesson 1</a> — aceeași idee, pe un alt tabel, cu o bază de date reală care îți verifică răspunsurile.</p>
 
-<p class="ask-teacher">Something unclear, or want to try this against real data instead of the toy table above? Ask your agent — that's what the follow-up conversation is for.</p>
+<p class="ask-teacher">Ceva neclar, sau vrei să încerci asta pe date reale în loc de tabelul-jucărie de mai sus? Întreabă-ți agentul — pentru asta e conversația de follow-up.</p>
 
 <div class="nav">
-<span>Reference: <a href="../reference/select-basics.html">SELECT syntax cheat sheet</a></span>
-<span>Next lesson: JOIN — coming once this one has sunk in</span>
+<span>Referință: <a href="../reference/select-basics.html">Cheat sheet sintaxă SELECT</a></span>
+<span>Lecția următoare: JOIN — vine odată ce asta s-a așezat bine</span>
 </div>
 
 </main>
