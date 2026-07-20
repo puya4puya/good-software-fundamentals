@@ -73,6 +73,24 @@ WHERE status &lt;&gt; 'complete';</code></pre>
 </div>
 </details>
 
+<h2>Verificare: scrie și rulează</h2>
+
+<p>Ultimii doi pași au fost pe hârtie. Acum scrie tu query-ul, de-adevăratelea, și rulează-l — se verifică automat dacă rezultatul e cel corect.</p>
+
+<div class="sql-exercise"
+     data-seed="CREATE TABLE orders (order_id INTEGER PRIMARY KEY, customer_email TEXT, status TEXT, total REAL); INSERT INTO orders (order_id, customer_email, status, total) VALUES (1001,'ana@example.com','complete',129.90),(1002,'bogdan@example.com','pending',59.00),(1003,'ana@example.com','complete',245.50),(1004,'cristina@example.com','canceled',19.99);"
+     data-check="SELECT customer_email, total FROM orders WHERE total > 100">
+<p class="sql-exercise-prompt">Scrie un query pe tabelul <code>orders</code> care returnează coloanele <code>customer_email</code> și <code>total</code> pentru comenzile cu <code>total</code> mai mare de <code>100</code>.</p>
+<textarea class="sql-exercise-input" rows="3" spellcheck="false" placeholder="SELECT ..."></textarea>
+<div class="sql-exercise-actions">
+<button type="button" data-action="run">Rulează</button>
+<button type="button" data-action="reveal">Arată răspunsul</button>
+</div>
+<div class="sql-exercise-output"></div>
+</div>
+
+<p class="source">Exercițiul rulează SQL real, în browser (SQLite via WebAssembly) — pentru <code>SELECT</code>/<code>WHERE</code> ca mai sus, sintaxa e identică cu MySQL. La lecțiile despre lucruri specifice MySQL o să semnalăm explicit dacă diferă.</p>
+
 <p class="source">Sursa primară pentru această lecție: <a href="https://dev.mysql.com/doc/mysql-tutorial-excerpt/8.0/en/selecting-all.html" target="_blank" rel="noopener">MySQL 8.0 Reference Manual — Selecting All Data</a>. Pentru exersare practică, cu feedback instant, fă în continuare <a href="https://sqlbolt.com/lesson/select_queries_introduction" target="_blank" rel="noopener">SQLBolt Lesson 1</a> — aceeași idee, pe un alt tabel, cu o bază de date reală care îți verifică răspunsurile.</p>
 
 <p class="ask-teacher">Ceva neclar, sau vrei să încerci asta pe date reale în loc de tabelul-jucărie de mai sus? Întreabă-ți agentul — pentru asta e conversația de follow-up.</p>
@@ -84,6 +102,7 @@ WHERE status &lt;&gt; 'complete';</code></pre>
 
 </main>
 
+<script src="../assets/sql-exercise.js"></script>
 <script src="../assets/fontsize.js"></script>
 </body>
 </html>

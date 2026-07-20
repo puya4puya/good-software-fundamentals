@@ -166,6 +166,75 @@ a:visited { color: var(--accent); opacity: 0.85; }
   color: var(--muted);
 }
 
+/* ---- SQL exercise widget (write-and-validate) ---- */
+.sql-exercise {
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin: 1.5rem 0;
+  background: var(--code-bg);
+}
+
+.sql-exercise-prompt { margin-top: 0; }
+
+.sql-exercise-input {
+  width: 100%;
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.95rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--ink);
+  resize: vertical;
+  line-height: 1.4;
+}
+
+.sql-exercise-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin: 0.75rem 0;
+}
+
+.sql-exercise-actions button {
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.sql-exercise-actions button[data-action="run"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--paper);
+}
+
+.sql-exercise-actions button:disabled { opacity: 0.6; cursor: wait; }
+
+.sql-exercise-answer {
+  background: var(--paper);
+  border: 1px dashed var(--rule);
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  margin: 0 0 0.75rem;
+}
+
+.sql-exercise-output table { font-size: 0.88rem; }
+
+.sql-exercise-msg {
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  margin: 0 0 0.6rem;
+}
+
+.sql-exercise-msg.is-ok { color: #2f7a3d; }
+.sql-exercise-msg.is-error { color: var(--accent); }
+
 /* ---- Font-size control (floating pill, mobile only) ---- */
 .fontsize-control {
   display: none; /* hidden on desktop — this widget is for mobile reading */
